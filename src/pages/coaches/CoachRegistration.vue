@@ -1,3 +1,3 @@
 <template>
-    not Found
+    REGISTER
 </template>

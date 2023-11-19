@@ -1,3 +1,3 @@
 <template>
-    not Found
+    CONTACT A COACH
 </template>
