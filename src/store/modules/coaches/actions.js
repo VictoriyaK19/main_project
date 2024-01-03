@@ -33,11 +33,11 @@ export default {
     const response = await fetch(
       `https://coachapp-5f863-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`
     );
-
     const responseData = await response.json();
 
     if (!response.ok) {
-      // ...
+      const error = new Error(responseData.message || "Failed to fetch!");
+      throw error;
     }
 
     const coaches = [];
@@ -46,7 +46,7 @@ export default {
       const coach = {
         id: key,
         firstName: responseData[key].firstName,
-        lastName: responseData[key].lasttName,
+        lastName: responseData[key].lastName,
         description: responseData[key].description,
         hourlyRate: responseData[key].hourlyRate,
         areas: responseData[key].areas,
