@@ -10,8 +10,11 @@ export default {
       areas: data.areas,
     };
 
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://coachapp-5f863-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+      `https://coachapp-5f863-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json?auth=` +
+        token,
       {
         method: "PUT",
         body: JSON.stringify(coachData),
@@ -56,10 +59,9 @@ export default {
         areas: responseData[key].areas,
       };
       coaches.push(coach);
-
     }
 
-    context.commit('setCoaches', coaches);
-    context.commit('setFetchTimestamp');
+    context.commit("setCoaches", coaches);
+    context.commit("setFetchTimestamp");
   },
 };
